@@ -37,7 +37,7 @@ public class MouseController : MonoBehaviour
         UpdateScroll();
 
         if (AreaUnderMouse != lastAreaUnderMouse)
-            UpdateArea();
+            MouseOverNewArea();
     }
     void UpdateDrag()
     {
@@ -65,7 +65,7 @@ public class MouseController : MonoBehaviour
             }
         }
     }
-    void UpdateArea()
+    void MouseOverNewArea()
     {
         if (AreaUnderMouse != null)
             AreaUnderMouse.Marked(true);
@@ -73,6 +73,8 @@ public class MouseController : MonoBehaviour
             lastAreaUnderMouse.Marked(false);
 
         lastAreaUnderMouse = AreaUnderMouse;
+
+        pC.NewAreaHighlighted(AreaUnderMouse);
     }
     Area MouseToArea()
     {
